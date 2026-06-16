@@ -1,0 +1,18 @@
+# Terraform state — contains sensitive resource data, never commit
+terraform.tfstate
+terraform.tfstate.backup
+*.tfstate
+*.tfstate.*
+
+# Your actual variable values — contains account ID, VPC ID, email
+terraform.tfvars
+
+# Terraform working directory
+.terraform/
+
+# Crash logs
+crash.log
+crash.*.log
+
+# Internal project memory
+memory/
