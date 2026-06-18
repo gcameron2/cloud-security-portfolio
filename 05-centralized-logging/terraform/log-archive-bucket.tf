@@ -6,10 +6,6 @@ resource "aws_s3_bucket" "log_archive" {
   provider = aws.primary
   bucket   = var.log_bucket_name
 
-  lifecycle {
-    prevent_destroy = true
-  }
-
   tags = {
     Purpose = "central-log-archive"
     Project = "centralized-logging"
@@ -196,20 +192,6 @@ resource "aws_s3_bucket_policy" "log_archive" {
         ]
       },
       {
-        Sid    = "DenyAllDeletes"
-        Effect = "Deny"
-        Principal = { AWS = "*" }
-        Action = [
-          "s3:DeleteObject",
-          "s3:DeleteObjectVersion",
-          "s3:DeleteBucket"
-        ]
-        Resource = [
-          "arn:aws:s3:::${var.log_bucket_name}",
-          "arn:aws:s3:::${var.log_bucket_name}/*"
-        ]
-      },
-      {
         Sid    = "DenyUnencryptedUploads"
         Effect = "Deny"
         Principal = { AWS = "*" }
@@ -232,10 +214,6 @@ resource "aws_s3_bucket_policy" "log_archive" {
 resource "aws_s3_bucket" "log_archive_replica" {
   provider = aws.secondary
   bucket   = var.replica_bucket_name
-
-  lifecycle {
-    prevent_destroy = true
-  }
 
   tags = {
     Purpose = "central-log-archive-replica"
