@@ -59,5 +59,3 @@ Real-time alert coverage includes: CloudTrail stopped or deleted, root account u
 ## About
 
 These projects are built in a real AWS environment, not simulations, to develop the skills that matter on day one: reading audit findings, writing IaC, understanding compliance controls, and documenting decisions clearly.
-
-Reach me on [GitHub](https://github.com/gcameron2) or at xavier@telosyssolutions.com.
